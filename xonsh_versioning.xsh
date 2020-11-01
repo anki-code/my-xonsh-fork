@@ -59,4 +59,18 @@ with indir(opt.xonsh_target_dir):
 
     sed -i @('s/__version__ = /__version__ = \"xonsh'+opt.xonsh_version+' fork from \" + /g') @(xonsh_versioned_lib_dir)/__init__.py
 
+
+    printy('[Update README]')
+    credits = f'This fork was created from {opt.xonsh_source_repo} using `xonsh-versioning <https://github.com/anki-code/xonsh-versioning>`_.'
+
+    mv README.rst README.rst_old
+    echo xonsh@(opt.xonsh_version) > README.rst
+    echo @('-' * len('xonsh' + opt.xonsh_version) ) >> README.rst
+    echo @(credits) >> README.rst
+    echo "\n\n---------------------------------------------------------------\n\n" >> README.rst
+    cat README.rst_old >> README.rst
+    echo @("\n\nCredits\n-------\n\n* " + credits) >> README.rst
+    rm README.rst_old
+
+
 printx('{GREEN}DONE{RESET}')
