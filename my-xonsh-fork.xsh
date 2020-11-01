@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 argp = argparse.ArgumentParser(description=f"Create versioned xonsh.")
-argp.add_argument('-xv', '--xonsh-version', required=True, help="Xonsh version")
+argp.add_argument('-n', '--fork-name', required=True, help="Fork name i.e. `-n 2` will create `xonsh2` fork.")
 argp.add_argument('-xsr', '--xonsh-source-repo', required=True, help="Xonsh source repo i.e. https://github.com/anki-code/xonsh-xep-2")
 argp.add_argument('-xtd', '--xonsh-target-dir', required=True, help="Xonsh target dir i.e. /tmp/xonsh-versioned")
 argp.add_argument('-f','--force-rebuild', action='store_true', help=f"Remove xonsh_target_dir directory and force rebuild from scratch.")
@@ -17,7 +17,7 @@ printy = lambda t: printx(f'{{YELLOW}}{t}{{RESET}}')
 
 opt.xonsh_target_dir = Path(opt.xonsh_target_dir)
 xonsh_lib_dir = opt.xonsh_target_dir / 'xonsh'
-xonsh_versioned_lib_dir = opt.xonsh_target_dir / f'xonsh{opt.xonsh_version}'
+xonsh_versioned_lib_dir = opt.xonsh_target_dir / f'xonsh{opt.fork_name}'
 
 if opt.force_rebuild:
     rm -rf @(opt.xonsh_target_dir)
@@ -36,10 +36,10 @@ if not xonsh_lib_dir.exists():
 
 printy(f'[Apply changes]')
 with indir(opt.xonsh_target_dir):
-    mv -v xonsh xonsh@(opt.xonsh_version)
-    mv -v xontrib xontrib@(opt.xonsh_version)
+    mv -v xonsh xonsh@(opt.fork_name)
+    mv -v xontrib xontrib@(opt.fork_name)
 
-    for dir in ['xonsh' + opt.xonsh_version, 'xontrib' + opt.xonsh_version, 'setup.py']:
+    for dir in ['xonsh' + opt.fork_name, 'xontrib' + opt.fork_name, 'setup.py']:
         print(f'Replace in {dir}:')
 
         packages = ['xonsh', 'xontrib']
@@ -52,25 +52,25 @@ with indir(opt.xonsh_target_dir):
 
                 beg = '' if beg == '^' else beg
                 end = '' if end == '$' else end
-                replace = f"{beg}{package}{opt.xonsh_version}{end}"
+                replace = f"{beg}{package}{opt.fork_name}{end}"
 
                 print('  ', f'{search} --> {replace}')
                 find @(dir) -type f -exec sed -i @('s/'+search+'/'+replace+'/g') '{}' '+'
 
-    sed -i @('s/__version__ = /__version__ = \"xonsh'+opt.xonsh_version+' fork from \" + /g') @(xonsh_versioned_lib_dir)/__init__.py
+    sed -i @('s/__version__ = /__version__ = \"xonsh'+opt.fork_name+' fork from \" + /g') @(xonsh_versioned_lib_dir)/__init__.py
 
     printy('[Patch RC]')
-    print(f'.xonshrc --> .xonshrc_{opt.xonsh_version}')
-    find . -type f -exec sed -i @('s/\.xonshrc/\.xonshrc_'+opt.xonsh_version+'/g') '{}' '+'
-    print(f'rc.xsh --> rc_{opt.xonsh_version}.xsh')
-    find . -type f -exec sed -i @('s/rc\.xsh/rc_'+opt.xonsh_version+'\.xsh/g') '{}' '+'
+    print(f'.xonshrc --> .xonshrc_{opt.fork_name}')
+    find . -type f -exec sed -i @('s/\.xonshrc/\.xonshrc_'+opt.fork_name+'/g') '{}' '+'
+    print(f'rc.xsh --> rc_{opt.fork_name}.xsh')
+    find . -type f -exec sed -i @('s/rc\.xsh/rc_'+opt.fork_name+'\.xsh/g') '{}' '+'
 
     printy('[Update README]')
     credits = f'This fork was created from {opt.xonsh_source_repo} using `xonsh-versioning <https://github.com/anki-code/xonsh-versioning>`_.'
 
     mv README.rst README.rst_old
-    echo xonsh@(opt.xonsh_version) > README.rst
-    echo @('-' * len('xonsh' + opt.xonsh_version) ) >> README.rst
+    echo xonsh@(opt.fork_name) > README.rst
+    echo @('-' * len('xonsh' + opt.fork_name) ) >> README.rst
     echo @(credits) >> README.rst
     echo "\n\n---------------------------------------------------------------\n\n" >> README.rst
     cat README.rst_old >> README.rst

@@ -1,19 +1,20 @@
 <p align="center">
-<b>xonsh-versioning</b> is to create versioned xonsh package. 
+<b>my-xonsh-fork</b> is to create PyPi package with new your fork xonsh package. 
 </p>
 
-<p align="center">
-For example you have your own fork of xonsh 
-and you want to install and use this fork along with original xonsh without affection or intersection. But you can't 
-implement versioning in your fork source code to avoid conflicts on merging with original xonsh. 
-In this case xonsh-versioning will help you to create separate version from your fork source code 
-and use it shoulder by shoulder with original xonsh.
-</p>
+## How it works
+
+1. You have your own fork of original xonsh repository.
+2. You want to install it on your host but you don't want to lose the original xonsh on your host and you don't want to rename xonsh package in your fork code to have an ability to pull the changes from the original xonsh repository without conflicts.
+3. When you run `my-xonsh-fork` it make a clone of the source git repo and replaces `xonsh` directory, calls, paths with the `xonsh{FORK_NAME}` i.e. `xonsh2`.
+4. Then you can install this package using `pip`.
+5. As result you'll have `xonsh` on the host along with `xonsh2`. You can use both `xonsh` and `xonsh2` in the sheband of your scripts i.e. `#!/usr/bin/env xonsh2`.
+6. Enjoy! :)
 
 ## Install
 ```python
-mkdir -p ~/git/xonsh_versioning
-cd ~/git/xonsh_versioning
+mkdir -p ~/git/my-xonsh-fork
+cd ~/git/my-xonsh-fork
 ```
 
 ## Example
@@ -21,15 +22,15 @@ For example you want to have two packages: `xonsh` with original xonsh and `xons
 
 To achieve this here is the example based on [XEP-2 fork](https://github.com/anki-code/xonsh-xep-2): 
 ```python
-./xonsh_versioning.xsh -xv 2 -xsr https://github.com/anki-code/xonsh-xep-2 -xtd /tmp/xonsh2 -f
+./my-xonsh-fork.xsh -n 2 -xsr https://github.com/anki-code/xonsh-xep-2 -xtd /tmp/xonsh2 -f
 pip install -U /tmp/xonsh2
 xonsh2 --no-rc
 ```
 
 ## .xonshrc and rc.xsh
 
-If your fork have version `2` (i.e. `./xonsh_versioning.xsh -xv 2 ...`) then it will expect `.xonshrc_2` and `rc_2.xsh` name 
-for xonsh RC files.
+If your fork has name `2` (i.e. `./my-xonsh-fork.xsh -n 2 ...`) then it will expect `.xonshrc_2` and `rc_2.xsh` name 
+for xonsh RC files. 
 
 ## Known issues
 
