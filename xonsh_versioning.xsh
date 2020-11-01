@@ -59,6 +59,11 @@ with indir(opt.xonsh_target_dir):
 
     sed -i @('s/__version__ = /__version__ = \"xonsh'+opt.xonsh_version+' fork from \" + /g') @(xonsh_versioned_lib_dir)/__init__.py
 
+    printy('[Patch RC]')
+    print(f'.xonshrc --> .xonshrc_{opt.xonsh_version}')
+    find . -type f -exec sed -i @('s/\.xonshrc/\.xonshrc_'+opt.xonsh_version+'/g') '{}' '+'
+    print(f'rc.xsh --> rc_{opt.xonsh_version}.xsh')
+    find . -type f -exec sed -i @('s/rc\.xsh/rc_'+opt.xonsh_version+'\.xsh/g') '{}' '+'
 
     printy('[Update README]')
     credits = f'This fork was created from {opt.xonsh_source_repo} using `xonsh-versioning <https://github.com/anki-code/xonsh-versioning>`_.'

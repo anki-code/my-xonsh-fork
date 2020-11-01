@@ -26,11 +26,13 @@ pip install -U /tmp/xonsh2
 xonsh2 --no-rc
 ```
 
+## .xonshrc and rc.xsh
+
+If your fork have version `2` (`xonsh2`) then it will expect `.xonshrc_2` and `rc_2.xsh` name for xonsh RC files.
+
 ## Known issues
 
-#### .xonshrc and xontribs
+#### xontribs
 
-Note! That if you have `.xonshrc` or xontribs from original xonsh they could fail in your fork.
-To get interactive mode without errors run `xonsh2 --no-rc`. 
-
+Note! That if you try to load xontribs from original xonsh they could fail in your fork.
 
