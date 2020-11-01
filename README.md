@@ -2,10 +2,6 @@
 <b>my-xonsh-fork</b> is to convert your xonsh fork package name to the new <br>i.e. <code>xonsh</code> becomes <code>xonsh42</code> and you can run it, add it to shebang or import in python. 
 </p>
 
-<p align="center">
-    <img src="xonsh-family.png" alt="xonsh family">
-</p>
-
 ## How it works
 
 1. You have your own fork of original xonsh repository.
