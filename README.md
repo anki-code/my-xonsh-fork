@@ -18,5 +18,14 @@ To achieve this here is the example based on [XEP-2 fork](https://github.com/ank
 ```python
 ./xonsh_versioning.xsh -xv 2 -xsr https://github.com/anki-code/xonsh-xep-2 -xtd /tmp/xonsh2 -f
 pip install -U /tmp/xonsh2
-xonsh2 
+xonsh2 --no-rc
 ```
+
+## Known issues
+
+#### .xonshrc and xontribs
+
+Note! That if you have `.xonshrc` or xontribs from original xonsh them could fail in your fork.
+To get interactive mode without errors run `xonsh2 --no-rc`. 
+
+
