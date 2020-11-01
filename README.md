@@ -5,7 +5,7 @@
 ## How it works
 
 1. You have your own fork of original xonsh repository.
-2. You want to install it on your host but you don't want to lose the original xonsh on your host and you don't want to rename xonsh package in your fork code to have an ability to pull the changes from the original xonsh repository without conflicts.
+2. You want to install it on your host. But you don't want to lose the original xonsh on your host. You don't want to rename xonsh package in your fork code to have an ability to pull the changes from the original xonsh repository without conflicts.
 3. When you run `my-xonsh-fork` it make a clone of the source git repo and replaces `xonsh` directory, calls, paths with the `xonsh{FORK_NAME}` i.e. `xonsh2`.
 4. Then you can install this package using `pip`.
 5. As result you'll have `xonsh` on the host along with `xonsh2`. You can use both `xonsh` and `xonsh2` in the sheband of your scripts i.e. `#!/usr/bin/env xonsh2`.
