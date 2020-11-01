@@ -1,6 +1,6 @@
 #!/usr/bin/env xonsh
 
-import argparse
+import argparse, re
 from xonsh.lib.os import indir
 from pathlib import Path
 
@@ -15,6 +15,9 @@ argp.add_argument('-f', '--force-rebuild', action='store_true', help=f"Remove XO
 opt = argp.parse_args()
 
 printy = lambda t: printx(f'{{YELLOW}}{t}{{RESET}}')
+
+if not re.match('^[0-9a-zA-Z_]+$',opt.fork_name):
+    printy('The name should be [0-9a-zA-Z_]+')
 
 opt.target_dir = Path(opt.target_dir)
 xonsh_lib_dir = opt.target_dir / 'xonsh'
