@@ -44,7 +44,5 @@ for xonsh RC files.
 
 ## Known issues
 
-#### xontribs
-
 Note! That if you try to load xontribs from original xonsh they could fail in your fork.
 
