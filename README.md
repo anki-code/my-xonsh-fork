@@ -5,7 +5,7 @@ and you want to install and use this fork along with original xonsh without affe
 
 ## Install
 ```python
-mkdir ~/git/xonsh_versioning
+mkdir -p ~/git/xonsh_versioning
 cd ~/git/xonsh_versioning
 ```
 
