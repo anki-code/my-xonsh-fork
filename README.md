@@ -13,13 +13,12 @@
 
 ## Install
 ```python
-mkdir -p ~/git/my-xonsh-fork
-cd ~/git/my-xonsh-fork
+pip install my-xonsh-fork
 ```
 
 ## Usage
 ```
-usage: my-xonsh-fork.xsh [-h] -n FORK_NAME -s SOURCE_REPO [-t TARGET_REPO] -d TARGET_DIR [-f]
+usage: my-xonsh-fork [-h] -n FORK_NAME -s SOURCE_REPO [-t TARGET_REPO] -d TARGET_DIR [-f]
 
 Convert your xonsh fork package name to the new.
 
@@ -41,7 +40,7 @@ For example you want to have two packages: `xonsh` with original xonsh and `xons
 
 To achieve this here is the example based on [XEP-2 fork](https://github.com/anki-code/xonsh-xep-2): 
 ```python
-./my-xonsh-fork.xsh -n 2 -s git@github.com:anki-code/xonsh-xep-2.git -d /tmp/xonsh2 -f
+my-xonsh-fork -n 2 -s git@github.com:anki-code/xonsh-xep-2.git -d /tmp/xonsh2 -f
 pip install -U /tmp/xonsh2
 xonsh2 --no-rc
 ```
@@ -49,4 +48,4 @@ If you want to push the renamed fork to new repo use ``--target-repo`` argument.
 
 ## .xonshrc, rc.xsh and xontrib
 
-If your fork has name `2` (i.e. `./my-xonsh-fork.xsh -n 2 ...`) then the new names of RC files and xontrib command will be: `.xonshrc_2`, `rc_2.xsh` and `xontrib2`. 
+If your fork has name `2` (i.e. `my-xonsh-fork -n 2 ...`) then the new names of RC files and xontrib command will be: `.xonshrc_2`, `rc_2.xsh` and `xontrib2`. 
