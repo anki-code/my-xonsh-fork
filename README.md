@@ -22,9 +22,19 @@ For example you want to have two packages: `xonsh` with original xonsh and `xons
 
 To achieve this here is the example based on [XEP-2 fork](https://github.com/anki-code/xonsh-xep-2): 
 ```python
-./my-xonsh-fork.xsh -n 2 -xsr https://github.com/anki-code/xonsh-xep-2 -xtd /tmp/xonsh2 -f
+./my-xonsh-fork.xsh -n 2 -xsr git@github.com:anki-code/xonsh-xep-2.git -xtd /tmp/xonsh2 -f
 pip install -U /tmp/xonsh2
 xonsh2 --no-rc
+```
+If you want to push it back to new repo:
+```python
+new_repo = 'git@github.com:YOURGITHUBNAME/YOURNEWREPO.git'
+cd /tmp/xonsh2
+git add -A
+git commit -m 'My xonsh fork!'
+git remote rename origin upstream
+git remote add origin @(new_repo)
+git push origin master
 ```
 
 ## .xonshrc and rc.xsh
