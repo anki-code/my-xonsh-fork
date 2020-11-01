@@ -1,5 +1,5 @@
 <p align="center">
-<b>my-xonsh-fork</b> is to convert your xonsh fork package name to the new i.e. <code>xonsh</code> becomes <code>xonsh42</code> and you can run it, add it to shebang of your scripts and do <code>import xonsh42</code>. 
+<b>my-xonsh-fork</b> is to convert your xonsh fork package name to the new <br>i.e. <code>xonsh</code> becomes <code>xonsh42</code> and you can run it, add it to shebang of your scripts and do <code>import xonsh42</code>. 
 </p>
 
 ## How it works
