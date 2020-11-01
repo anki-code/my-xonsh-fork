@@ -17,25 +17,35 @@ mkdir -p ~/git/my-xonsh-fork
 cd ~/git/my-xonsh-fork
 ```
 
+## Usage
+```
+usage: my-xonsh-fork.xsh [-h] -n FORK_NAME -s SOURCE_REPO [-t TARGET_REPO] -d TARGET_DIR [-f]
+
+Convert your xonsh fork package name to the new.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n FORK_NAME, --fork-name FORK_NAME
+                        Fork name i.e. `-n 2` will create `xonsh2` fork.
+  -s SOURCE_REPO, --source-repo SOURCE_REPO
+                        Source repo i.e. git@github.com:anki-code/xonsh-xep-2.git
+  -t TARGET_REPO, --target-repo TARGET_REPO
+                        Target empty repo to push the result i.e. git@github.com:anki-code/xonsh2.git
+  -d TARGET_DIR, --target-dir TARGET_DIR
+                        Target dir i.e. /tmp/xonsh2
+  -f, --force-rebuild   Remove XONSH_TARGET_DIR and rebuild from scratch.
+```
+
 ## Example
 For example you want to have two packages: `xonsh` with original xonsh and `xonsh2` - your fork of original xonsh. 
 
 To achieve this here is the example based on [XEP-2 fork](https://github.com/anki-code/xonsh-xep-2): 
 ```python
-./my-xonsh-fork.xsh -n 2 -xsr git@github.com:anki-code/xonsh-xep-2.git -xtd /tmp/xonsh2 -f
+./my-xonsh-fork.xsh -n 2 -s git@github.com:anki-code/xonsh-xep-2.git -d /tmp/xonsh2 -f
 pip install -U /tmp/xonsh2
 xonsh2 --no-rc
 ```
-If you want to push it back to new repo:
-```python
-new_repo = 'git@github.com:YOURGITHUBNAME/YOURNEWREPO.git'
-cd /tmp/xonsh2
-git add -A
-git commit -m 'My xonsh fork!'
-git remote rename origin upstream
-git remote add origin @(new_repo)
-git push origin master
-```
+If you want to push the renamed fork to new repo use ``--target-repo`` argument.
 
 ## .xonshrc and rc.xsh
 
