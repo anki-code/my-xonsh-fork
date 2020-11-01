@@ -1,5 +1,5 @@
 <p align="center">
-<b>my-xonsh-fork</b> is to create PyPi package with new your fork xonsh package. 
+<b>my-xonsh-fork</b> is to convert your xonsh fork package name to the new i.e. <code>xonsh</code> becomes <code>xonsh42</code> and you can run it, add it to shebang of your scripts and do <code>import xonsh42</code>. 
 </p>
 
 ## How it works
