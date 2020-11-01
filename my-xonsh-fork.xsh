@@ -28,7 +28,7 @@ if xonsh_versioned_lib_dir.exists():
 
 if not opt.xonsh_target_dir.exists():
     printy(f'[Git clone {opt.xonsh_source_repo} into {opt.xonsh_target_dir}]')
-    git clone --depth 1 @(opt.xonsh_source_repo) @(opt.xonsh_target_dir)
+    git clone @(opt.xonsh_source_repo) @(opt.xonsh_target_dir)
 
 if not xonsh_lib_dir.exists():
     printx("{YELLOW}Xonsh lib directory doesn't exists!{RESET}")
@@ -55,15 +55,15 @@ with indir(opt.xonsh_target_dir):
                 replace = f"{beg}{package}{opt.fork_name}{end}"
 
                 print('  ', f'{search} --> {replace}')
-                find @(dir) -type f -exec sed -i @('s/'+search+'/'+replace+'/g') '{}' '+'
+                find @(dir) -not -path '*/\.git*' -type f -exec sed -i @('s/'+search+'/'+replace+'/g') '{}' '+'
 
     sed -i @('s/__version__ = /__version__ = \"xonsh'+opt.fork_name+' fork from \" + /g') @(xonsh_versioned_lib_dir)/__init__.py
 
     printy('[Patch RC]')
     print(f'.xonshrc --> .xonshrc_{opt.fork_name}')
-    find . -type f -exec sed -i @('s/\.xonshrc/\.xonshrc_'+opt.fork_name+'/g') '{}' '+'
+    find .  -not -path '*/\.git*'  -type f -exec sed -i @('s/\.xonshrc/\.xonshrc_'+opt.fork_name+'/g') '{}' '+'
     print(f'rc.xsh --> rc_{opt.fork_name}.xsh')
-    find . -type f -exec sed -i @('s/rc\.xsh/rc_'+opt.fork_name+'\.xsh/g') '{}' '+'
+    find .  -not -path '*/\.git*'  -type f -exec sed -i @('s/rc\.xsh/rc_'+opt.fork_name+'\.xsh/g') '{}' '+'
 
     printy('[Update README]')
     credits = f'This fork was created from {opt.xonsh_source_repo} using `xonsh-versioning <https://github.com/anki-code/xonsh-versioning>`_.'
