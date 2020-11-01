@@ -47,12 +47,6 @@ xonsh2 --no-rc
 ```
 If you want to push the renamed fork to new repo use ``--target-repo`` argument.
 
-## .xonshrc and rc.xsh
+## .xonshrc, rc.xsh and xontrib
 
-If your fork has name `2` (i.e. `./my-xonsh-fork.xsh -n 2 ...`) then it will expect `.xonshrc_2` and `rc_2.xsh` name 
-for xonsh RC files. 
-
-## Known issues
-
-Note! That if you try to load xontribs from original xonsh they could fail in your fork.
-
+If your fork has name `2` (i.e. `./my-xonsh-fork.xsh -n 2 ...`) then the new names of RC files and xontrib command will be: `.xonshrc_2`, `rc_2.xsh` and `xontrib2`. 
