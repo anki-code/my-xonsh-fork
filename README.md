@@ -1,6 +1,13 @@
 <p align="center">
-<b>xonsh-versioning</b> is to create versioned xonsh package. For example you have your own fork of xonsh 
-and you want to install and use this fork along with original xonsh without affection or intersection.
+<b>xonsh-versioning</b> is to create versioned xonsh package. 
+</p>
+
+<p align="center">
+For example you have your own fork of xonsh 
+and you want to install and use this fork along with original xonsh without affection or intersection. But you can't 
+implement versioning in your fork source code to avoid conflicts on merging with original xonsh. 
+In this case xonsh-versioning will help you to create separate version from your fork source code 
+and use it shoulder by shoulder with original xonsh.
 </p>
 
 ## Install
