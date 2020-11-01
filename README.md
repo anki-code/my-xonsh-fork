@@ -25,7 +25,7 @@ xonsh2 --no-rc
 
 #### .xonshrc and xontribs
 
-Note! That if you have `.xonshrc` or xontribs from original xonsh them could fail in your fork.
+Note! That if you have `.xonshrc` or xontribs from original xonsh they could fail in your fork.
 To get interactive mode without errors run `xonsh2 --no-rc`. 
 
 
