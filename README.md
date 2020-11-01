@@ -28,7 +28,8 @@ xonsh2 --no-rc
 
 ## .xonshrc and rc.xsh
 
-If your fork have version `2` (`xonsh2`) then it will expect `.xonshrc_2` and `rc_2.xsh` name for xonsh RC files.
+If your fork have version `2` (i.e. `./xonsh_versioning.xsh -xv 2 ...`) then it will expect `.xonshrc_2` and `rc_2.xsh` name 
+for xonsh RC files.
 
 ## Known issues
 
