@@ -9,7 +9,6 @@
 3. When you run `my-xonsh-fork` it make a clone of the source git repo and replaces `xonsh` directory, calls, paths with the `xonsh{FORK_NAME}` i.e. `xonsh2`.
 4. Then you can install this package using `pip`.
 5. As result you'll have `xonsh` on the host along with `xonsh2`. You can use both `xonsh` and `xonsh2` in the sheband of your scripts i.e. `#!/usr/bin/env xonsh2`.
-6. Enjoy! :)
 
 ## Install
 ```python
