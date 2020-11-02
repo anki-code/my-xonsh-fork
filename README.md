@@ -48,3 +48,22 @@ If you want to push the renamed fork to new repo use ``--target-repo`` argument.
 ## .xonshrc, rc.xsh and xontrib
 
 If your fork has name `2` (i.e. `my-xonsh-fork -n 2 ...`) then the new names of RC files and xontrib command will be: `.xonshrc_2`, `rc_2.xsh` and `xontrib2`. 
+
+## Add your fork support to the xontrib
+
+If your fork has name `2` (i.e. `my-xonsh-fork -n 2 ...`) then the new name of the xontribs package will be `xontrib2`. To support this in the xontrib change the sections in `setup.py` of the xontrib:
+
+```python
+setup(
+  ...
+  packages=[
+        'xontrib',
+        'xontrib2'  # Added
+  ],
+  package_dir={
+        'xontrib': 'xontrib', 
+        'xontrib2': 'xontrib'  # Added
+  },
+  ...
+)
+```
